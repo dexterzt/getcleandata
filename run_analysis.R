@@ -75,3 +75,6 @@ names(raw_data)[2]="activity"
 data_avg=raw_data %>% group_by(activity, subject) %>% summarise_each(funs(mean))
 names(data_avg)[3:81]=paste("avg", names(data_avg)[3:81])
 data_avg=gather(data_avg, variable, value, -(activity:subject))
+
+#create txt file
+write.table(data_avg, 'data_avg.txt', row.names = FALSE)
